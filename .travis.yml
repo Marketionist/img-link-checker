@@ -1,0 +1,26 @@
+# http://docs.travis-ci.com/user/workers/container-based-infrastructure/
+sudo: required
+dist: trusty
+
+# http://docs.travis-ci.com/user/languages/javascript-with-nodejs/
+language: node_js
+node_js:
+  - "8"
+  - "9"
+  - "10"
+  - "11"
+  - "12"
+  - "13"
+
+install:
+  - npm install
+
+before_script:
+  - npm run lint
+
+# http://docs.travis-ci.com/user/pull-requests/
+script:
+  - echo "Tests from code:"
+  - npm test
+  - echo "Tests from file with TARGET_FILE_PATH env variable:"
+  - TARGET_FILE_PATH='./README.md' node index.js
