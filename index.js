@@ -32,9 +32,10 @@ module.exports = {
         }));
 
         const brokenLinks = [];
+        const statusCodeOk = 200;
 
         responses.map((value, index) => {
-            if (value !== 200) { brokenLinks.push(links[index]); }
+            if (value !== statusCodeOk) { brokenLinks.push(links[index]); }
         });
 
         if (brokenLinks.length > 0) {
