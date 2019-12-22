@@ -1,27 +1,23 @@
 const { promisify } = require('util');
 const fs = require('fs');
-const path = require('path');
 const axios = require('axios');
 
-module.exports = {
+const checkFile = async (filePath) => {
+    const readFile = promisify(fs.readFile);
+    const text = await readFile(filePath, 'utf8');
 
-    checkFile: async (directoryPath, file) => {
-        const readFile = promisify(fs.readFile);
-        const filePath = process.env.TARGET_FILE_PATH || path.join(directoryPath, file);
+    // Filter out only links that start from http(s) and end with ) or " or '
+    // Using negative lookahead ?! to filter out localhost:
+    const links = text.match(/https?:\/\/(?!.*(localhost:)).*?[\)|"|']/gi);
 
-        const text = await readFile(filePath, 'utf8');
+    if (links) {
+        // Clear links from last character ) or " or '
+        const clearedLinks = links.map((value) => value.slice(0, -1));
 
-        // Filter out only links that start from http(s) and end with ) or " or '
-        // Using negative lookahead ?! to filter out localhost:
-        const links = text.match(/https?:\/\/(?!.*(localhost:)).*?[\)|"|']/gi).map(
-            // Clear links from last character ) or " or '
-            (value) => value.slice(0, -1)
-        );
+        console.log(`Found ${clearedLinks.length} link(s):`);
+        console.log(clearedLinks);
 
-        console.log(`Found ${links.length} links:`);
-        console.log(links);
-
-        const responses = await Promise.all(links.map(async (value) => {
+        const responses = await Promise.all(clearedLinks.map(async (value) => {
             try {
                 const response = await axios.get(value);
 
@@ -35,15 +31,25 @@ module.exports = {
         const statusCodeOk = 200;
 
         responses.map((value, index) => {
-            if (value !== statusCodeOk) { brokenLinks.push(links[index]); }
+            if (value !== statusCodeOk) { brokenLinks.push(clearedLinks[index]); }
         });
 
         if (brokenLinks.length > 0) {
             console.error('Broken links list:', brokenLinks);
             process.exit(1);
         } else {
-            return links;
+            return clearedLinks;
         }
+    } else {
+        console.log(`No links found in ${filePath}`);
     }
 
+};
+
+if (process.env.TARGET_FILE_PATH) {
+    checkFile(process.env.TARGET_FILE_PATH);
+}
+
+module.exports = {
+    checkFile
 };
