@@ -1,5 +1,9 @@
 # img-link-checker
 
+[![Build Status](https://travis-ci.org/Marketionist/img-link-checker.svg?branch=master)](https://travis-ci.org/Marketionist/img-link-checker)
+[![npm version](https://img.shields.io/npm/v/img-link-checker.svg)](https://www.npmjs.com/package/img-link-checker)
+[![NPM License](https://img.shields.io/npm/l/img-link-checker.svg)](https://github.com/Marketionist/img-link-checker/blob/master/LICENSE)
+
 Check any file for broken links and images
 
 # Installation
