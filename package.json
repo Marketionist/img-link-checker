@@ -18,11 +18,16 @@
     "url": "https://github.com/Marketionist/img-link-checker"
   },
   "keywords": [
-    "testing tools",
+    "check links",
+    "check-links",
+    "find broken links",
+    "find-broken-links",
     "img link checker",
     "img-link-checker",
     "image link checker",
-    "image-link-checker"
+    "image-link-checker",
+    "check links in md",
+    "check-links-in-md"
   ],
   "author": "Dmytro Shpakovskyi",
   "license": "MIT",
