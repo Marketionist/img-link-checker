@@ -9,7 +9,7 @@ absolute links in it. It makes request to URL specified in each link and if resp
 the process exits and the list of broken links is outputted. 
 
 # Installation
-This is a lightweight package with 0 dependencies. To install it just run:
+This is a lightweight package with only 1 dependency (axios). To install it just run:
 ```
 npm install img-link-checker --save-dev
 ```
