@@ -33,5 +33,5 @@ TARGET_FILE_PATH='./README.md' node node_modules/.bin/img-link-checker
 ```
 
 # Thanks
-If this link and image checking tool was helpful for you, please give it a **★ Star**
-on [github](https://github.com/Marketionist/img-link-checker).
+If this link and image checking tool was helpful to you, please give it a **★ Star**
+on [GitHub](https://github.com/Marketionist/img-link-checker).
