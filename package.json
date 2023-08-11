@@ -1,6 +1,6 @@
 {
   "name": "img-link-checker",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Check any file for broken links and images",
   "main": "index.js",
   "engines": {
