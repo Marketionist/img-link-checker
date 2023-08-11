@@ -1,6 +1,6 @@
 # img-link-checker
 
-[![Build Status](https://travis-ci.org/Marketionist/img-link-checker.svg?branch=master)](https://travis-ci.org/Marketionist/img-link-checker)
+[![Actions Status](https://github.com/Marketionist/img-link-checker/workflows/Build%20and%20Test/badge.svg?branch=master)](https://github.com/Marketionist/img-link-checker/actions)
 [![npm version](https://img.shields.io/npm/v/img-link-checker.svg)](https://www.npmjs.com/package/img-link-checker)
 [![NPM License](https://img.shields.io/npm/l/img-link-checker.svg)](https://github.com/Marketionist/img-link-checker/blob/master/LICENSE)
 
