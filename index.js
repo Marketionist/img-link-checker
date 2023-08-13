@@ -23,7 +23,7 @@ const checkFile = async (filePath) => {
 
                 return response.status;
             } catch (error) {
-                console.error(`Found broken link (${error.response.status}): ${value}`);
+                console.error(`Found broken link (${error}): ${value}`);
             }
         }));
 
