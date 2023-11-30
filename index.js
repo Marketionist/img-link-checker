@@ -13,6 +13,7 @@ const checkFile = async (filePath, ignoreLinks = []) => {
     if (links) {
         // Clear links from last character ) or " or '
         let filteredLinks = links.map((value) => value.slice(0, -1));
+
         // Remove the ignored links if any
         if (ignoreLinks.length > 0) {
             filteredLinks = filteredLinks.filter((value) => {
