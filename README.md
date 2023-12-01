@@ -32,6 +32,15 @@ launch the command with `TARGET_FILE_PATH` environment variable:
 TARGET_FILE_PATH='./README.md' node node_modules/.bin/img-link-checker
 ```
 
+> Note: if you need to ignore some of the links - you can specify
+> an optional second argument with an array of links that should
+> not be checked:
+> ```
+> const { checkFile } = require('img-link-checker');
+>
+> checkFile('./README.md', ['https://www.linkedin.com/in/test/']);
+> ```
+
 # Thanks
 If this link and image checking tool was helpful to you, please give it a **★ Star**
 on [GitHub](https://github.com/Marketionist/img-link-checker).
