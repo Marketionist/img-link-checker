@@ -3,11 +3,9 @@ const fs = require('fs');
 const axios = require('axios');
 
 const checkFile = async (filePath, ignoreLinks = []) => {
-    if (process.env.TARGET_FILE_PATH) {
-        filePath = process.env.TARGET_FILE_PATH;
-    }
+    const pathToFile = process.env.TARGET_FILE_PATH || filePath;
     const readFile = promisify(fs.readFile);
-    const text = await readFile(filePath, 'utf8');
+    const text = await readFile(pathToFile, 'utf8');
 
     // Filter out only links that start with http(s) and end with ) or " or '
     // Using negative lookahead ?! to filter out localhost:
@@ -51,7 +49,7 @@ const checkFile = async (filePath, ignoreLinks = []) => {
             return filteredLinks;
         }
     } else {
-        console.log(`No links found in ${filePath}`);
+        console.log(`No links found in ${pathToFile}`);
     }
 
 };
