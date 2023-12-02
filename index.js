@@ -3,6 +3,9 @@ const fs = require('fs');
 const axios = require('axios');
 
 const checkFile = async (filePath, ignoreLinks = []) => {
+    if (process.env.TARGET_FILE_PATH) {
+        filePath = process.env.TARGET_FILE_PATH;
+    }
     const readFile = promisify(fs.readFile);
     const text = await readFile(filePath, 'utf8');
 
@@ -52,10 +55,6 @@ const checkFile = async (filePath, ignoreLinks = []) => {
     }
 
 };
-
-if (process.env.TARGET_FILE_PATH) {
-    checkFile(process.env.TARGET_FILE_PATH);
-}
 
 module.exports = {
     checkFile
