@@ -61,4 +61,4 @@ jobs:
           echo "Tests from code:"
           npm test
           echo "Tests from file with TARGET_FILE_PATH env variable:"
-          TARGET_FILE_PATH='./README.md' npm test
+          TARGET_FILE_PATH='./README.md' node index.js
