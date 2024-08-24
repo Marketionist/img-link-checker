@@ -18,11 +18,11 @@ npm install img-link-checker --save-dev
 
 ## From the code
 For example if you want to check `README.md` for broken links and images just require `img-link-checker` and call
-`checkFile('./path/to/file/', 'README.md');`:
+`checkFile('./path/to/file/README.md');`:
 ```
 const { checkFile } = require('img-link-checker');
 
-checkFile('./README.md');
+await checkFile('./README.md');
 ```
 
 ## From the command line
@@ -38,7 +38,13 @@ TARGET_FILE_PATH='./README.md' node node_modules/.bin/img-link-checker
 > ```
 > const { checkFile } = require('img-link-checker');
 >
-> checkFile('./README.md', ['https://www.linkedin.com/in/test/']);
+> const brokenLinks = await checkFile('./README.md', ['https://www.linkedin.com/in/test/']);
+>
+> // Print a list of broken links and exit the process (will mark the CI/CD build as failed)
+> if (brokenLinks.length > 0) {
+>     console.error('Broken links list:', brokenLinks);
+>     process.exit(1);
+> }
 > ```
 
 # Thanks
